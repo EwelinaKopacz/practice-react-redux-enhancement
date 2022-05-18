@@ -30,6 +30,11 @@ const Stack = () => {
         }
     },[sortType])
 
+    const convertData =(unixData)=>{
+        const date = new Date(unixData * 1000);
+        return(date.toLocaleDateString());
+    }
+
     const renderTopicsList = () => {
         return topicsList.map(item => {
             return (
@@ -37,7 +42,7 @@ const Stack = () => {
                     <tr key={item.question_id}>
                         <td>{item.owner.display_name}</td>
                         <td>{item.owner.reputation}</td>
-                        <td>{item.creation_date}</td>
+                        <td>{convertData(item.creation_date)}</td>
                     </tr>
                 </>
             )
